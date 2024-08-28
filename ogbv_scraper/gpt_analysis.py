@@ -2,7 +2,7 @@ import openai
 import json
 import re
 
-openai.api_key = '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'
+openai.api_key = ''
 
 def preprocess_text(text):
     text = text.lower()  
