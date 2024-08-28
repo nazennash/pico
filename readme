@@ -1,0 +1,30 @@
+Main Objective: Create a repository of Online Gender-Based Violence (OGBV) lexicons tailored to African languages and contexts to improve the detection and understanding of online violence.
+Implementation method: An AI-based lexicon generation and update system
+
+setup a virtual environment for the project: python -m venv venv
+activate the virtual environment: cd venv/Scripts then ./activate
+get back to root folder using cd .. (twice)
+
+1.  ogbv_scraper
+    This folder contains a scraper tool done using scrapy
+
+         ogbv_scraper\ogbv_scraper\spiders\ogbv_spider.py - The main scraper directory
+
+         in it, one can input the website he desires to scrape then runs the command: scrapy crawl ogbv
+
+         a file will then be generated and copied one directory back for analysis
+
+         on the command line run python gpt_analysis.py
+         This will produce another json file with the analysis done showing of the nature of sentence (if it gender based violent sentence)
+
+         For the case of this project, preference is put on african website, post, blogs
+
+2.  ogbv_monitoring
+    This folder contains django project encompassing django templating engine
+
+        in this social media accounts (instagram, X, and facebook) are monitored
+        Analysis is given on the conversation that entails onine gender based violence and in addition to the openai,  #hashtags are used in identification
+
+        Using this, one needs to have four API access keys in order to be successful with it.
+
+        check on the developer portal for the API keys and make sure you get the right ones, for example facebook required the users key and not normal access key that is explicit on their site
