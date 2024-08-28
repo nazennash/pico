@@ -1,0 +1,7 @@
+<h1>OGBV Monitoring Report</h1>
+<p>Total Tweets Collected: {{ tweets|length }}</p>
+<ul>
+    {% for tweet in tweets %}
+    <li><strong>{{ tweet.user }}</strong>: {{ tweet.text }} ({{ tweet.created_at|date:"Y-m-d H:i" }})</li>
+    {% endfor %}
+</ul>
