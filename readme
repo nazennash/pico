@@ -1,30 +1,206 @@
-Main Objective: Create a repository of Online Gender-Based Violence (OGBV) lexicons tailored to African languages and contexts to improve the detection and understanding of online violence.
-Implementation method: An AI-based lexicon generation and update system
+OGBV Lexicon Monitoring System
 
-setup a virtual environment for the project: python -m venv venv
-activate the virtual environment: cd venv/Scripts then ./activate
-get back to root folder using cd .. (twice)
+Table of Contents
 
-1.  ogbv_scraper
-    This folder contains a scraper tool done using scrapy
+1. Overview
+2. Problem-statement
+3. Objectives
+4. Implementation
+5. Project Structure
+6. Prerequisites for the creation of environment
+7. Setup Instructions
+8. Running the System
+    8.1 User Authentication
+    8.2 The Emergence of Social Media Streams
+    8.3 Viewing the Dashboard
+    8.4 Generating Reports
+    8.5 Accessing the non-hypertext and clandestine sections
+9. Expected Outcomes
+10. Advantages Over Traditional Methods
+11. Challenges and Mitigation Strategies
+12. Troubleshooting
 
-         ogbv_scraper\ogbv_scraper\spiders\ogbv_spider.py - The main scraper directory
+1. Overview
+The OGBV Lexicon Monitoring System is a complex solution that will help in creating an OGBV lexicon database suitable for African languages and conditions. This system enhances sensitivity and cultural context in the detection of threats of violence through the use of AI and NLP, and it can be updated in real-time, if required.
 
-         in it, one can input the website he desires to scrape then runs the command: scrapy crawl ogbv
+2. Problem Statement
+Digital Gender Based Violence or DGBV is prevalent and people are usually attacked based on the gender they identify with often those from the African continent because of the many languages and cultures whereby it is hard to track. Former designed detectors are usually not able to identify abusive language in the African languages and therefore, do not provide proper prevention apparatuses against OGBV.
 
-         a file will then be generated and copied one directory back for analysis
+3. Objectives
 
-         on the command line run python gpt_analysis.py
-         This will produce another json file with the analysis done showing of the nature of sentence (if it gender based violent sentence)
+Main Objective: Suggest an Online Gender-Based Violence (OGBV) lexicon database that is appropriate for African languages and context to address the prevalence of OGBV and awareness.
 
-         For the case of this project, preference is put on african website, post, blogs
+Other Objectives: 
+    - Propose an architecture of an online lexicon generation and update system using AI techniques.
+    - Make sure that there are lexicons available for several African languages to enhance the documentation of all the different African language variations.
+    - These corpora requires to be become more realistic in relation to the existing culture and the slang used in various parts of the world.
+    - i: Incorporate new terms from the reference materials for increasing the efficiency of OGBV detectors.
+    - Establish a web-based tool that enables the user to search and reorganize lexicons in a simple manner by researchers and policymakers.
 
-2.  ogbv_monitoring
-    This folder contains django project encompassing django templating engine
+4. Implementation
+Data Collection
+Data is collected from several sites including social networks, forums, and any other site where OGBV cases might be reported. This data is collected either via web scraping tools such as **Scrapy** or via APIs, where available.
 
-        in this social media accounts (instagram, X, and facebook) are monitored
-        Analysis is given on the conversation that entails onine gender based violence and in addition to the openai,  #hashtags are used in identification
+NLP and AI Integration
+The collected data is then analyzed using the most advanced NLP models such as **BERT** or **GPT**. These models are expected to help in detecting and categorizing abusive language relevant to African languages. Various text analysis techniques such as text classification and entity recognition are employed in the OGBV-related terms and phrases search.
 
-        Using this, one needs to have four API access keys in order to be successful with it.
+Real-Time Updates
+For the purpose of feeding fresh abusive language patterns into the lexicons, a pipeline is created. This makes the lexicons up-to-date and relevant for the task leading to improved detection accuracy regarding the texts.
 
-        check on the developer portal for the API keys and make sure you get the right ones, for example facebook required the users key and not normal access key that is explicit on their site
+Expected Outcome
+This idea presupposes that the system will produce an innovative centralized database to store OGBV lexicons with new abusive words in African languages. It will strengthen the detection systems of OGBV by increasing the level of specificity.
+
+Project Structure
+
+├── README.md
+├── manage.py
+├── ogbv_monitoring/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+├── monitor/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── views.py
+│   ├── twitter_client.py
+│   ├── facebook_client.py
+│   ├── instagram_client.py
+│   ├── anonymizer.py
+│   ├── templates/
+│   │   ├── monitor/
+│   │   │   └── base.html
+│   │   │   └── home.html
+│   │   │   └── dashboard.html
+│   │   │   └── report.html
+│   │   │   └── login.html
+│   │   │   └── logout_confirmation.html
+│   │   │   └── Transparency.html
+│   │   │   └── unauthorized.html
+├── data/
+│   ├── data_*.json
+│   ├── analysis_results.json
+└── requirements.txt
+
+Prerequisites for the creation of environment
+
+Ensure that your environment meets the following requirements:It is important that your operating environment complied with the following conditions:
+1. Python 3.7+
+2. Django 3.0+
+3. Scrapy
+4. Tweepy
+5. Requests
+6. TextBlob
+7. LangDetect
+8. xhtml2pdf
+9. OpenAI API Key - This was used in the evaluation of the results and in making a feedback from the OpenAI language analysis on some of the inputs made.
+
+Setup Instructions
+
+Clone the Repository
+git clone {git link}
+cd ogbv-lexicon-monitoring
+
+Creating and Activating a Virtual Environment. Windows OS Machine
+python3 -m venv venv
+source venv/bin/activate  
+
+Install Dependencies
+pip install -r requirements.txt
+
+Set Up Environment Variables
+
+In the Django Settings file:Settings for Django:
+
+TWITTER_API_KEY=your_twitter_api_key
+TWITTER_API_SECRET_KEY=your_twitter_api_secret_key
+TWITTER_ACCESS_TOKEN=your_twitter_access_token
+TWITTER_ACCESS_TOKEN_SECRET=your_twitter_access_token_secret
+TWITTER_BEARER_TOKEN=your_twitter_bearer_token
+FACEBOOK_ACCESS_TOKEN=your_facebook_access_token
+INSTAGRAM_ACCESS_TOKEN=your_instagram_access_token
+OPENAI_API_KEY=your_openai_api_key
+
+Run Migrations
+python manage.py migrate
+
+Create a Superuser
+python manage.py createsuperuser
+
+Start the Development Server
+python manage.py runserver
+
+Access the Application
+Open your web browser and navigate to `http:The application can be accessed via the web address `http://127.0.0.1:8000/`.
+
+Running the System
+
+User Authentication
+Navigate to the login page: For sign in we use the link- ` http://127.0.0.1:8000/login/`.
+Enter your credentials. Finally, if the authentication is successful, you will be taken to the dashboard page.
+
+Starting Social Media Streams
+The system supports real-time data collection from multiple social media platforms:The system aids the collection of data in real-time from various social media platforms:
+
+Twitter: To start the Twitter stream, the URL in the terminals is `http://127.0.0.1:8000/start-twitter-stream/
+Facebook: Open `http://127.0.0.1:8000/start-facebook-stream/` to start streaming Facebook data.
+Instagram: Instagram data can be collected by going to the address `http://127.0.0.1:8000/start-instagram-stream/`.
+
+These actions will initiate the data gathering and analysis sequence, where needed, to save the pertinent posts in the database.
+
+Viewing the Dashboard
+Access the dashboard at `http:It appears to be accessible from http://127.0.0.1:8000/dashboard/ to view.
+- The sampling includes the latest tweets/posts tagged for OGBV.
+- The total number of entries for each ID.
+- The qualitative analysis of sentiments based on temporal analysis of data using charts.
+
+Generating Reports
+Generate a PDF report by navigating to `http:Kindly give me the URL to the application by following the link at `http://127.0.0.1:8000/generate-report/`. The most recent data shall be in the report which will be saved in ‘ogbv_report.pdf’.
+
+Supplementary to that, the accessibility of the site to the Desired Transparency and Unauthorized Pages is manageable.
+These pages provide additional context and are accessible at:These pages could provide some further background and can be found at:
+Transparency: `http://127.0.0.1:8000/transparency/`
+Unauthorized Access: `http://127.0.0.1:8000/unauthorized/`
+
+Expected Outcomes
+
+Centralized Database**: Continual archive of all OGBV lexica current today.
+Improved Detection**: More effectiveness in analyzing abusive language situations in African contexts.
+User-Friendly Interface**: Accessibility for the researchers as well as the policymakers.
+
+Advantages Over Traditional Methods
+Dynamic and Real-Time Updates**: It is more dynamic in nature, providing more accurate and up-to-date results of lexical semantics as opposed to fixed references.
+Linguistic and Cultural Relevance**: In this case, the system related to African languages and conditions that offer a better evaluation and consideration of the matter.
+
+OGBV.
+Comprehensive Data Collection**: Gathers data from several sources which provide a broader picture of the tendencies in the use of abusive language on the Internet.
+
+Challenges and Mitigation Strategies
+
+Data Privacy
+Challenge: This is why managing the enormous quantity of the data presented by users is considerably problematic for personal privacy.
+Mitigation: Mask the data in order to prevent a breach of the Data Protection laws.
+
+NLP Model Limitations
+Challenge: NLP models can be oblivious to context shifts, irony or sarcasm.
+Mitigation: Training at least once a year, careful addition of new large data sets, and constant model improvement based on the results received.
+
+Real-Time Processing
+Challenge: In real-time data processing, it is sometimes a problem since a lot of resources may be needed for this.
+Mitigation: Integrate cost effective cloud based tools and streamline the data flows corridors.
+
+Troubleshooting
+Server Not Starting
+1. Ensure that all dependants are properly installed.
+2. Before it runs, we need to ensure that the relevant virtual environment is activated.
+
+API Key Errors
+1. Check the `.env` file and ensure all API keys and tokens are properly entered.
+2. When engaging the API’s please ensure that the API key you enter has the right level of permissions needed.
+
+Database Migrations Fail**
+1. You should ensure that you execute the following command in your terminal `python manage.py migrate` so us to bring all current migrations into what you have.
+2. This implies that you need to ensure that the database has been well configured within the ‘settings.py’.
